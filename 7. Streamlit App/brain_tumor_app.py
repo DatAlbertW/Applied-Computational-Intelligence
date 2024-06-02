@@ -1,22 +1,28 @@
+import os
 import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
-import os
 
-# Paths to model parts
-model_part_aa = '7. Streamlit App/efficientnetb0_model_part_aa'
-model_part_ab = '7. Streamlit App/efficientnetb0_model_part_ab'
-model_part_ac = '7. Streamlit App/efficientnetb0_model_part_ac'
-model_path = '/tmp/efficientnetb0_model.h5'  # Temporary path to save the concatenated model
+def reassemble_model(parts, output_file):
+    with open(output_file, 'wb') as model_file:
+        for part in parts:
+            with open(part, 'rb') as part_file:
+                model_file.write(part_file.read())
 
-# Concatenate model parts to form the complete model file
+# Reassemble the model if it doesn't exist
+model_path = 'efficientnetb0_model.h5'
+if not os.path.exists(model_path):
+    model_parts = [
+        '7. Streamlit App/efficientnetb0_model_part_aa',
+        '7. Streamlit App/efficientnetb0_model_part_ab',
+        '7. Streamlit App/efficientnetb0_model_part_ac',
+    ]
+    reassemble_model(model_parts, model_path)
+
+# Load the reassembled model
 @st.cache(allow_output_mutation=True)
 def load_complete_model():
-    with open(model_path, 'wb') as f:
-        for part in [model_part_aa, model_part_ab, model_part_ac]:
-            with open(part, 'rb') as p:
-                f.write(p.read())
     model = load_model(model_path)
     return model
 
