@@ -30,8 +30,12 @@ six==1.16.0
 streamlit==1.35.0
 tensorboard==2.15.2
 tensorflow==2.15.0
+tensorflow-datasets==4.9.4
 tensorflow-estimator==2.15.0
+tensorflow-gcs-config==2.15.0
+tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.37.0
+tensorflow-metadata==1.15.0
 termcolor==2.4.0
 tornado==6.3.3
 typing_extensions==4.11.0
