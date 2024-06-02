@@ -18,9 +18,6 @@ The App can be found in: https://applied-computational-intelligence-mag26btztvy8
 OR
 
 Scan the QR code below to access the app:
-![Alt text](6_Streamlit_App/qr-code.png)
-<img src="6_Streamlit_App/qr-code.png" alt="QR Code" width="30%">
-![qr-code](https://github.com/DatAlbertW/Applied-Computational-Intelligence/assets/144963224/1f7d5689-9d6e-4bee-84a8-efbde0e55d51)
 <img src="https://github.com/DatAlbertW/Applied-Computational-Intelligence/assets/144963224/1f7d5689-9d6e-4bee-84a8-efbde0e55d51" alt="QR Code" width="30%">
 
 ## Disclaimer
