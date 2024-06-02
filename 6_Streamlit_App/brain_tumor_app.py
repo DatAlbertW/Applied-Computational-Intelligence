@@ -65,17 +65,21 @@ else:
                 st.write("Classifying...")
 
                 # Make predictions
-                predictions = model.predict(image_array)
-                st.write(f"Predicted probabilities: {predictions}")  # Debug: Show the predicted probabilities
-                predicted_class = np.argmax(predictions, axis=1)[0]
-                if predicted_class == 2:
-                    st.session_state['prediction'] = "This is an MRI scan of a Healthy Patient"
-                else:
-                    st.session_state['prediction'] = f"This is an MRI scan of a {class_names[predicted_class]}"
+                try:
+                    predictions = model.predict(image_array)
+                    st.write(f"Predicted probabilities: {predictions}")  # Debug: Show the predicted probabilities
+                    predicted_class = np.argmax(predictions, axis=1)[0]
+                    if predicted_class == 2:
+                        st.session_state['prediction'] = "This is an MRI scan of a Healthy Patient"
+                    else:
+                        st.session_state['prediction'] = f"This is an MRI scan of a {class_names[predicted_class]}"
+                except Exception as e:
+                    st.error(f"Error during model prediction: {e}")
+                    st.session_state['prediction'] = "Image not Recognized"
             else:
                 st.session_state['prediction'] = "No file uploaded or file could not be read."
         except Exception as e:
-            st.error(f"Error during prediction: {e}")
+            st.error(f"Error during file processing: {e}")
             st.session_state['prediction'] = "Image not Recognized"
 
     if st.session_state['prediction'] is not None:
@@ -86,3 +90,4 @@ else:
         st.experimental_rerun()
 
     st.write("Note: The model is for educational purposes and not for medical diagnosis.")
+
