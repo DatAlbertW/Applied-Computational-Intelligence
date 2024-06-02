@@ -26,7 +26,7 @@ MarkupSafe==2.1.5
 mdurl==0.1.2
 ml-dtypes==0.3.2
 namex==0.0.8
-numpy==1.26.4
+numpy==1.23.5
 opt-einsum==3.3.0
 optree==0.11.0
 packaging==24.0
@@ -59,3 +59,4 @@ tzdata==2024.1
 urllib3==2.2.1
 Werkzeug==3.0.3
 wrapt==1.16.0
+
