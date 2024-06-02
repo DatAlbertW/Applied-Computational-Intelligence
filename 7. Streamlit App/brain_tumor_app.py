@@ -10,13 +10,16 @@ def reassemble_model(parts, output_file):
             with open(part, 'rb') as part_file:
                 model_file.write(part_file.read())
 
-# Reassemble the model if it doesn't exist
+# Define the directory for the model parts
+model_parts_directory = '7_Streamlit_App'  # Change to a path without spaces
 model_path = 'efficientnetb0_model.h5'
+
+# Reassemble the model if it doesn't exist
 if not os.path.exists(model_path):
     model_parts = [
-        '7. Streamlit App/efficientnetb0_model_part_aa',
-        '7. Streamlit App/efficientnetb0_model_part_ab',
-        '7. Streamlit App/efficientnetb0_model_part_ac',
+        os.path.join(model_parts_directory, 'efficientnetb0_model_part_aa'),
+        os.path.join(model_parts_directory, 'efficientnetb0_model_part_ab'),
+        os.path.join(model_parts_directory, 'efficientnetb0_model_part_ac'),
     ]
     reassemble_model(model_parts, model_path)
 
@@ -78,4 +81,5 @@ if st.button("Reset"):
     st.experimental_rerun()
 
 st.write("Note: The model is for educational purposes and not for medical diagnosis.")
+
 
