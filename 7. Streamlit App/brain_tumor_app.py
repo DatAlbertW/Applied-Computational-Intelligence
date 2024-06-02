@@ -78,3 +78,4 @@ if st.button("Reset"):
     st.experimental_rerun()
 
 st.write("Note: The model is for educational purposes and not for medical diagnosis.")
+
