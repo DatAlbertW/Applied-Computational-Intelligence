@@ -2,13 +2,12 @@ import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
-import os
 
 # Paths to model parts
 model_part_aa = '7. Streamlit App/efficientnetb0_model_part_aa'
 model_part_ab = '7. Streamlit App/efficientnetb0_model_part_ab'
 model_part_ac = '7. Streamlit App/efficientnetb0_model_part_ac'
-model_path = '7. Streamlit App/efficientnetb0_model.h5'
+model_path = '/tmp/efficientnetb0_model.h5'  # Temporary path to save the concatenated model
 
 # Concatenate model parts to form the complete model file
 @st.cache(allow_output_mutation=True)
