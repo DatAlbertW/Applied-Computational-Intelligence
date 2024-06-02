@@ -5,7 +5,7 @@ from tensorflow.keras.preprocessing.image import img_to_array, load_img
 import os
 
 # Path to the complete model
-model_path = '7. Streamlit App/copy_efficientnetb0_model.h5'
+model_path = '6_Streamlit_App/copy_efficientnetb0_model.h5'
 
 # Load the complete model
 @st.cache(allow_output_mutation=True)
