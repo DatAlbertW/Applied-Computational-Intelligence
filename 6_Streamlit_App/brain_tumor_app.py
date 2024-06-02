@@ -41,6 +41,7 @@ if st.session_state['uploaded_file'] is not None:
     image = load_img(st.session_state['uploaded_file'], target_size=(224, 224))
     image_array = img_to_array(image)
     image_array = np.expand_dims(image_array, axis=0)
+    image_array = image_array / 255.0  # Normalizing the image
 
     st.image(image, caption='Uploaded MRI Image.', use_column_width=True)
     st.write("")
@@ -49,13 +50,14 @@ if st.session_state['uploaded_file'] is not None:
     # Make predictions
     try:
         predictions = model.predict(image_array)
+        st.write(f"Predicted probabilities: {predictions}")  # Debug: Show the predicted probabilities
         predicted_class = np.argmax(predictions, axis=1)[0]
         if predicted_class == 2:
             st.session_state['prediction'] = "This is an MRI scan of a Healthy Patient"
         else:
             st.session_state['prediction'] = f"This is an MRI scan of a {class_names[predicted_class]}"
     except Exception as e:
-        st.session_state['prediction'] = "Image not Recognized"
+        st.session_state['prediction'] = f"Image not Recognized: {e}"
 
 if st.session_state['prediction'] is not None:
     st.success(st.session_state['prediction'])
