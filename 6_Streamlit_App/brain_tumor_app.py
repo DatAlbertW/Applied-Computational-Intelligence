@@ -3,7 +3,6 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from tensorflow.keras.applications.efficientnet import preprocess_input
-import os
 import io
 
 # Path to the complete model
@@ -53,8 +52,10 @@ else:
             # Read the uploaded file
             file = st.session_state['uploaded_file']
             if file is not None:
+                # Ensure the file pointer is at the start
+                file.seek(0)
                 # Use PIL to handle the uploaded file
-                image = load_img(io.BytesIO(file.read()), target_size=(224, 224))
+                image = load_img(file, target_size=(224, 224))
                 image_array = img_to_array(image)
                 image_array = np.expand_dims(image_array, axis=0)
                 image_array = preprocess_input(image_array)  # Ensure the image is preprocessed correctly
