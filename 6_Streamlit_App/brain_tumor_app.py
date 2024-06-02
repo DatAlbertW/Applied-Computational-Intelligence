@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
+from tensorflow.keras.applications.efficientnet import preprocess_input
 import os
 
 # Path to the complete model
@@ -10,8 +11,12 @@ model_path = '6_Streamlit_App/copy_efficientnetb0_model.h5'
 # Load the complete model
 @st.cache(allow_output_mutation=True)
 def load_complete_model():
-    model = load_model(model_path)
-    return model
+    try:
+        model = load_model(model_path)
+        return model
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
 
 # Load the model
 model = load_complete_model()
@@ -38,17 +43,17 @@ if st.session_state['uploaded_file'] is None:
     st.session_state['uploaded_file'] = uploaded_file
 
 if st.session_state['uploaded_file'] is not None:
-    image = load_img(st.session_state['uploaded_file'], target_size=(224, 224))
-    image_array = img_to_array(image)
-    image_array = np.expand_dims(image_array, axis=0)
-    image_array = image_array / 255.0  # Normalizing the image
-
-    st.image(image, caption='Uploaded MRI Image.', use_column_width=True)
-    st.write("")
-    st.write("Classifying...")
-
-    # Make predictions
     try:
+        image = load_img(st.session_state['uploaded_file'], target_size=(224, 224))
+        image_array = img_to_array(image)
+        image_array = np.expand_dims(image_array, axis=0)
+        image_array = preprocess_input(image_array)  # Ensure the image is preprocessed correctly
+
+        st.image(image, caption='Uploaded MRI Image.', use_column_width=True)
+        st.write("")
+        st.write("Classifying...")
+
+        # Make predictions
         predictions = model.predict(image_array)
         st.write(f"Predicted probabilities: {predictions}")  # Debug: Show the predicted probabilities
         predicted_class = np.argmax(predictions, axis=1)[0]
@@ -57,7 +62,8 @@ if st.session_state['uploaded_file'] is not None:
         else:
             st.session_state['prediction'] = f"This is an MRI scan of a {class_names[predicted_class]}"
     except Exception as e:
-        st.session_state['prediction'] = f"Image not Recognized: {e}"
+        st.error(f"Error during prediction: {e}")
+        st.session_state['prediction'] = "Image not Recognized"
 
 if st.session_state['prediction'] is not None:
     st.success(st.session_state['prediction'])
