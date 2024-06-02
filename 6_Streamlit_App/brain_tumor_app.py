@@ -8,8 +8,7 @@ import os
 # Path to the complete model
 model_path = '6_Streamlit_App/copy_efficientnetb0_model.h5'
 
-# Load the complete model
-@st.cache(allow_output_mutation=True)
+# Load the complete model without caching the complex object directly
 def load_complete_model():
     try:
         model = load_model(model_path)
@@ -87,5 +86,3 @@ else:
         st.experimental_rerun()
 
     st.write("Note: The model is for educational purposes and not for medical diagnosis.")
-
-
