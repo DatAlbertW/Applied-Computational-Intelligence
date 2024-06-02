@@ -3,7 +3,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from tensorflow.keras.applications.efficientnet import preprocess_input
-import io
+import os
 
 # Path to the complete model
 model_path = '6_Streamlit_App/copy_efficientnetb0_model.h5'
@@ -87,4 +87,5 @@ else:
         st.experimental_rerun()
 
     st.write("Note: The model is for educational purposes and not for medical diagnosis.")
+
 
