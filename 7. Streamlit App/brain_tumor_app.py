@@ -6,7 +6,7 @@ import gdown
 import os
 
 # Google Drive file ID
-file_id = 'https://drive.google.com/file/d/1rXo1p7HeQlLWVH2JOq6ac2vevp6TuMA2/view?usp=sharing'
+file_id = '1rXo1p7HeQlLWVH2JOq6ac2vevp6TuMA2'  # Extracted from the shared link
 output = 'model_enb0.h5'
 
 # Function to download the model from Google Drive
