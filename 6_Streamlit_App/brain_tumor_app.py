@@ -1,29 +1,13 @@
-import os
 import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
+import os
 
-def reassemble_model(parts, output_file):
-    with open(output_file, 'wb') as model_file:
-        for part in parts:
-            with open(part, 'rb') as part_file:
-                model_file.write(part_file.read())
+# Path to the complete model
+model_path = '7. Streamlit App/copy_efficientnetb0_model.h5'
 
-# Define the directory for the model parts
-model_parts_directory = '7_Streamlit_App'  # Change to a path without spaces
-model_path = 'efficientnetb0_model.h5'
-
-# Reassemble the model if it doesn't exist
-if not os.path.exists(model_path):
-    model_parts = [
-        os.path.join(model_parts_directory, 'efficientnetb0_model_part_aa'),
-        os.path.join(model_parts_directory, 'efficientnetb0_model_part_ab'),
-        os.path.join(model_parts_directory, 'efficientnetb0_model_part_ac'),
-    ]
-    reassemble_model(model_parts, model_path)
-
-# Load the reassembled model
+# Load the complete model
 @st.cache(allow_output_mutation=True)
 def load_complete_model():
     model = load_model(model_path)
@@ -81,5 +65,3 @@ if st.button("Reset"):
     st.experimental_rerun()
 
 st.write("Note: The model is for educational purposes and not for medical diagnosis.")
-
-
