@@ -4,6 +4,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from tensorflow.keras.applications.efficientnet import preprocess_input
 import os
+import io
 
 # Path to the complete model
 model_path = '6_Streamlit_App/copy_efficientnetb0_model.h5'
@@ -44,23 +45,29 @@ if st.session_state['uploaded_file'] is None:
 
 if st.session_state['uploaded_file'] is not None:
     try:
-        image = load_img(st.session_state['uploaded_file'], target_size=(224, 224))
-        image_array = img_to_array(image)
-        image_array = np.expand_dims(image_array, axis=0)
-        image_array = preprocess_input(image_array)  # Ensure the image is preprocessed correctly
+        # Read the uploaded file
+        file = st.session_state['uploaded_file']
+        if file is not None:
+            # Use PIL to handle the uploaded file
+            image = load_img(io.BytesIO(file.read()), target_size=(224, 224))
+            image_array = img_to_array(image)
+            image_array = np.expand_dims(image_array, axis=0)
+            image_array = preprocess_input(image_array)  # Ensure the image is preprocessed correctly
 
-        st.image(image, caption='Uploaded MRI Image.', use_column_width=True)
-        st.write("")
-        st.write("Classifying...")
+            st.image(image, caption='Uploaded MRI Image.', use_column_width=True)
+            st.write("")
+            st.write("Classifying...")
 
-        # Make predictions
-        predictions = model.predict(image_array)
-        st.write(f"Predicted probabilities: {predictions}")  # Debug: Show the predicted probabilities
-        predicted_class = np.argmax(predictions, axis=1)[0]
-        if predicted_class == 2:
-            st.session_state['prediction'] = "This is an MRI scan of a Healthy Patient"
+            # Make predictions
+            predictions = model.predict(image_array)
+            st.write(f"Predicted probabilities: {predictions}")  # Debug: Show the predicted probabilities
+            predicted_class = np.argmax(predictions, axis=1)[0]
+            if predicted_class == 2:
+                st.session_state['prediction'] = "This is an MRI scan of a Healthy Patient"
+            else:
+                st.session_state['prediction'] = f"This is an MRI scan of a {class_names[predicted_class]}"
         else:
-            st.session_state['prediction'] = f"This is an MRI scan of a {class_names[predicted_class]}"
+            st.session_state['prediction'] = "No file uploaded or file could not be read."
     except Exception as e:
         st.error(f"Error during prediction: {e}")
         st.session_state['prediction'] = "Image not Recognized"
