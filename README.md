@@ -2,15 +2,13 @@
 
 ## Optimization Approach: Classification of Brain Tumor Images Using Convolutional Neural Network (EfficientNet)
 
-# Brain Tumor Image Classification Using Convolutional Neural Networks
-
-This project investigates the classification of brain tumor images using Convolutional Neural Networks (CNNs), Support Vector Machines (SVMs), and Genetic Algorithms (GAs). The primary objective is to optimize hyperparameters for the diagnosis of brain tumors from Magnetic Resonance Imaging (MRI) scans. The study also briefly explores CNN applications in diagnosing gastrointestinal disorders and blepharoptosis identification.
+This project investigates the classification of brain tumor images using Convolutional Neural Networks (CNNs), Support Vector Machines (SVMs), and Genetic Algorithms (GAs). The primary objective is to optimize hyperparameters for the diagnosis of brain tumors from Magnetic Resonance Imaging (MRI) scans.
 
 ## Project Tasks and Status
 
 | Task               | Status                        |
 |--------------------|-------------------------------|
-| Research paper     | ![done](https://img.shields.io/badge/status-done-brightgreen) |
+| Research paper     | ![done](https://img.shields.io/badge/done-brightgreen) |
 | Video              | ![done](https://img.shields.io/badge/status-done-brightgreen) |
 | Software prototype | ![done](https://img.shields.io/badge/status-done-brightgreen) |
 | Generated data     | ![done](https://img.shields.io/badge/status-done-brightgreen) |
