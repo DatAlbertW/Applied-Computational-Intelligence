@@ -12,40 +12,30 @@ This project investigates the classification of brain tumor images using Convolu
 | Video              | ![done](https://img.shields.io/badge/done-brightgreen)|
 | Software prototype | ![done](https://img.shields.io/badge/done-brightgreen)|
 | Generated data     | ![done](https://img.shields.io/badge/done-brightgreen)|
-| Presentation       | ![done](https://img.shields.io/badge/done-brightgreen) |
-| Streamlit App      | ![done](https://img.shields.io/badge/done-brightgreen) |
+| Presentation       | ![done](https://img.shields.io/badge/done-brightgreen)|
+| Streamlit App      | ![done](https://img.shields.io/badge/done-brightgreen)|
 
 ## Sections
 
 ### 1. Research Paper
-This section contains the comprehensive research conducted on brain tumor image classification using CNNs. The paper is available in both PDF and DOCX formats.
+This section contains the research conducted on image classification. The paper is available in both PDF and DOCX formats.
 
 ### 2. Video
-An MP4 video summarizing the project, highlighting the key findings and methodologies employed in the research.
+An MP4 video summarizing the project.
 
 ### 3. Software Prototype
-Installation guides and details for the three prototypes developed during this project. Each prototype is designed to showcase different aspects of the classification and optimization processes.
+Installation guides and details for the three prototypes developed during this project.
 
 ### 4. Generated Data
-This section includes an Excel sheet and two experimental software applications containing the data generated and used in the study.
+Includes an Excel sheet and two experimental SVM software applications.
 
 ### 5. Presentation
-A set of PDF slides summarizing the entire project, intended for presenting the research findings and conclusions.
+PDF slides summarizing the project.
 
 ### 6. Streamlit App
-The Streamlit application developed for this project includes the software, usage instructions, and links to access the app online. This app provides an interactive interface for exploring the classification results and methodologies.
-
-## Project Description
-
-Almost 90% of all data in healthcare consists of medical images. Recent advancements in Convolutional Neural Networks (CNNs) have significantly impacted the field of medical image classification. This project aims to enhance the diagnostic accuracy of brain tumor classification using MRI scans by leveraging a hybrid CNN-SVM model optimized with Genetic Algorithms. The study evaluates the effectiveness of different CNN architectures and hyperparameter optimization techniques, providing comprehensive insights into their application in medical radiology.
-
-The models are designed to classify three types of brain tumors: Glioma, Meningioma, and Pituitary tumor. Various CNN architectures, including EfficientNetB0, are employed and optimized to achieve high accuracy and performance. The project also includes the use of transfer learning and SVM for feature extraction and classification, followed by Genetic Algorithms to fine-tune the SVM hyperparameters.
-
-## Conclusion
-
-The integration of CNNs with SVMs and GAs demonstrates a promising approach for improving the accuracy and efficiency of brain tumor classification from MRI images. The findings from this project can potentially contribute to advancements in medical image analysis and diagnostic accuracy in the healthcare field.
+Includes the software, usage instructions, and links to access the app online.
 
 ---
-
+## Note:
 Please refer to the individual sections for more details.
 
