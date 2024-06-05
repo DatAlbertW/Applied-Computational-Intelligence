@@ -10,10 +10,10 @@ This project investigates the classification of brain tumor images using Convolu
 |--------------------|-------------------------------|
 | Research paper     | ![done](https://img.shields.io/badge/done-brightgreen)|
 | Video              | ![done](https://img.shields.io/badge/done-brightgreen)|
-| Software prototype | ![done](https://img.shields.io/badge/done-brightgreen) |
-| Generated data     | ![done](https://img.shields.io/badge/status-done-brightgreen) |
-| Presentation       | ![done](https://img.shields.io/badge/status-done-brightgreen) |
-| Streamlit App      | ![done](https://img.shields.io/badge/status-done-brightgreen) |
+| Software prototype | ![done](https://img.shields.io/badge/done-brightgreen)|
+| Generated data     | ![done](https://img.shields.io/badge/done-brightgreen)|
+| Presentation       | ![done](https://img.shields.io/badge/done-brightgreen) |
+| Streamlit App      | ![done](https://img.shields.io/badge/done-brightgreen) |
 
 ## Sections
 
